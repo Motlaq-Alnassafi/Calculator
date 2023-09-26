@@ -104,8 +104,10 @@ class ViewController: UIViewController {
     
     @IBAction func buttonEqual(_ sender: UIButton){
         
-        var valueOne : Int = Int(labelTextOne)!
-        var valueTwo : Int = Int(labelTextTwo)!
+        //Fixed by using nill coalescing operator
+        let valueOne : Int = Int(labelTextOne) ?? 0
+        let valueTwo : Int = Int(labelTextTwo) ?? 0
+        
         var total : Int = 0
         
         if operation == "Multiplication" {
@@ -125,7 +127,7 @@ class ViewController: UIViewController {
             textLabel.text="\(total)"
         }
         else{
-            textLabel.text = ""
+            textLabel.text = "0"
         }
         labelTextTwo = ""
         labelTextOne = String(total)
