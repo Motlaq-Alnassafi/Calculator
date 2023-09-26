@@ -104,6 +104,7 @@ class ViewController: UIViewController {
     
     @IBAction func buttonEqual(_ sender: UIButton){
         
+        //must fix valueone and valuetwo
         var valueOne : Int = Int(labelTextOne)!
         var valueTwo : Int = Int(labelTextTwo)!
         var total : Int = 0
