@@ -115,8 +115,14 @@ class ViewController: UIViewController {
             textLabel.text="\(total)"
         }
         else if operation == "Div" {
-            total = valueTwo / valueOne
-            textLabel.text="\(total)"
+            if valueOne != 0 {
+                total = valueTwo / valueOne
+                textLabel.text="\(total)"
+            } else{
+                textLabel.text = "Error: Cant Divide by 0"
+                labelTextOne = ""
+                labelTextTwo = ""
+            }
         }
         else if operation == "Sub" {
             total = valueTwo - valueOne
