@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         labelTextOne += "0"
         textLabel.text = labelTextOne
     }
+    
     @IBAction func button1(_ sender: UIButton) {
         labelTextOne += "1"
         textLabel.text = labelTextOne
