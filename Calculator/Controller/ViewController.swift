@@ -14,18 +14,58 @@ class ViewController: UIViewController {
     var labelTextTwo : String = ""
     var operation : String = ""
     
+    var buttonArray : [UIButton] = [UIButton]()
+
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var button7: UIButton!
+    @IBOutlet weak var button8: UIButton!
+    @IBOutlet weak var button9: UIButton!
+    @IBOutlet weak var divide: UIButton!
+    @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var button5: UIButton!
+    @IBOutlet weak var button6: UIButton!
+    @IBOutlet weak var multiply: UIButton!
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var subtract: UIButton!
+    @IBOutlet weak var button0: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var addition: UIButton!
+    @IBOutlet weak var equal: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // added a button array so that i can make changes to all button simultaneously
+        self.buttonArray = [
+            self.button7,self.button8,self.button9,self.divide,
+            self.button4,self.button5,self.button6,self.multiply,
+            self.button1,self.button2,self.button3,self.subtract,
+            self.button0,self.resetButton,self.addition,self.equal
+        ]
+        
         textLabel.text = "0"
+        textLabel.font = .systemFont(ofSize: 60)
+        
+        for i in buttonArray {
+            i.layer.cornerRadius = 20
+        }
     }
+}
 
+//MARK: - Button extenstion
+
+extension ViewController {
+    
     @IBAction func button0(_ sender: UIButton) {
-        labelTextOne += "0"
-        textLabel.text = labelTextOne
+        if labelTextOne != "0"
+        {
+            labelTextOne += "0"
+            textLabel.text = labelTextOne
+        }
     }
+    
     @IBAction func button1(_ sender: UIButton) {
         labelTextOne += "1"
         textLabel.text = labelTextOne
@@ -119,7 +159,7 @@ class ViewController: UIViewController {
                 total = valueTwo / valueOne
                 textLabel.text="\(total)"
             } else{
-                textLabel.text = "Error: Cant Divide by 0"
+                textLabel.text = "Error"
                 labelTextOne = ""
                 labelTextTwo = ""
             }
@@ -138,6 +178,4 @@ class ViewController: UIViewController {
         labelTextTwo = ""
         labelTextOne = String(total)
     }
-    
 }
-
