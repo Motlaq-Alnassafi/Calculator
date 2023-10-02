@@ -8,14 +8,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     
     var labelTextOne : String = ""
     var labelTextTwo : String = ""
     var operation : String = ""
     
     var buttonArray : [UIButton] = [UIButton]()
-
+    
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var button7: UIButton!
     @IBOutlet weak var button8: UIButton!
@@ -58,60 +58,57 @@ class ViewController: UIViewController {
 
 extension ViewController {
     
-    
     @IBAction func buttonHandler(_ sender: UIButton) {
-       
-        if sender.titleLabel?.text == "0" {
-            labelTextOne += "0"
-            textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "1" {
+        
+        switch sender.titleLabel?.text {
+        case "1":
             labelTextOne += "1"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "2" {
-            labelTextOne += "2"
-            textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "3" {
+        case "2":
             labelTextOne += "3"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "4" {
+        case "3":
+            labelTextOne += "3"
+            textLabel.text = labelTextOne
+        case "4":
             labelTextOne += "4"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "5" {
+        case "5":
             labelTextOne += "5"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "6" {
+        case "6":
             labelTextOne += "6"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "7" {
+        case "7":
             labelTextOne += "7"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "8" {
+        case "8":
             labelTextOne += "8"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "9" {
+        case "9":
             labelTextOne += "9"
             textLabel.text = labelTextOne
-        } else if sender.titleLabel?.text == "C" {
-            textLabel.text = "0"
-            labelTextTwo = ""
-            labelTextOne = ""
-        } else if sender.titleLabel?.text == "+" {
-            labelTextTwo = labelTextOne
-            labelTextOne = ""
-            operation = "Add"
-        } else if sender.titleLabel?.text == "-" {
-            labelTextTwo = labelTextOne
-            labelTextOne = ""
-            operation = "Sub"
-        } else if sender.titleLabel?.text == "/" {
+        case "/":
             labelTextTwo = labelTextOne
             labelTextOne = ""
             operation = "Div"
-        } else if sender.titleLabel?.text == "X" {
+        case "X":
             labelTextTwo = labelTextOne
             labelTextOne = ""
             operation = "Multiplication"
-        } else {
+        case "-":
+            labelTextTwo = labelTextOne
+            labelTextOne = ""
+            operation = "Sub"
+        case "+":
+            labelTextTwo = labelTextOne
+            labelTextOne = ""
+            operation = "Add"
+        case "C":
+            textLabel.text = "0"
+            labelTextTwo = ""
+            labelTextOne = ""
+        case "=":
             //Fixed by using nill coalescing operator
             let valueOne : Int = Int(labelTextOne) ?? 0
             let valueTwo : Int = Int(labelTextTwo) ?? 0
@@ -145,6 +142,9 @@ extension ViewController {
             }
             labelTextTwo = ""
             labelTextOne = String(total)
+        default:
+            labelTextOne += "0"
+            textLabel.text = labelTextOne
         }
     }
 }
