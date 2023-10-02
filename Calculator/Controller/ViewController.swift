@@ -58,124 +58,93 @@ class ViewController: UIViewController {
 
 extension ViewController {
     
-    @IBAction func button0(_ sender: UIButton) {
-        if labelTextOne != "0"
-        {
+    
+    @IBAction func buttonHandler(_ sender: UIButton) {
+       
+        if sender.titleLabel?.text == "0" {
             labelTextOne += "0"
             textLabel.text = labelTextOne
-        }
-    }
-    
-    @IBAction func button1(_ sender: UIButton) {
-        labelTextOne += "1"
-        textLabel.text = labelTextOne
-    }
-    @IBAction func button2(_ sender: UIButton) {
-        labelTextOne += "2"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func button3(_ sender: UIButton) {
-        labelTextOne += "3"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func button4(_ sender: UIButton) {
-        labelTextOne += "4"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func button5(_ sender: UIButton) {
-        labelTextOne += "5"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func button6(_ sender: UIButton) {
-        labelTextOne += "6"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func button7(_ sender: UIButton) {
-        labelTextOne += "7"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func button8(_ sender: UIButton) {
-        labelTextOne += "8"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func button9(_ sender: UIButton) {
-        labelTextOne += "9"
-        textLabel.text = labelTextOne
-    }
-    
-    @IBAction func divButton(_ sender: UIButton) {
-        labelTextTwo = labelTextOne
-        labelTextOne = ""
-        operation = "Div"
-    }
-    
-    @IBAction func multiButton(_ sender: UIButton){
-        labelTextTwo = labelTextOne
-        labelTextOne = ""
-        operation = "Multiplication"
-    }
-    
-    
-    @IBAction func subButton(_ sender: UIButton) {
-        labelTextTwo = labelTextOne
-        labelTextOne = ""
-        operation = "Sub"
-    }
-    
-    
-    @IBAction func addButton(_ sender: UIButton) {
-        labelTextTwo = labelTextOne
-        labelTextOne = ""
-        operation = "Add"
-    }
-    
-    @IBAction func resetButton(_ sender: UIButton) {
-        textLabel.text = "0"
-        labelTextTwo = ""
-        labelTextOne = ""
-    }
-    
-    @IBAction func buttonEqual(_ sender: UIButton){
-        
-        //Fixed by using nill coalescing operator
-        let valueOne : Int = Int(labelTextOne) ?? 0
-        let valueTwo : Int = Int(labelTextTwo) ?? 0
-        
-        var total : Int = 0
-        
-        if operation == "Multiplication" {
-            total = valueTwo * valueOne
-            textLabel.text="\(total)"
-        }
-        else if operation == "Div" {
-            if valueOne != 0 {
-                total = valueTwo / valueOne
-                textLabel.text="\(total)"
-            } else{
-                textLabel.text = "Error"
-                labelTextOne = ""
-                labelTextTwo = ""
-            }
-        }
-        else if operation == "Sub" {
-            total = valueTwo - valueOne
-            textLabel.text="\(total)"
-        }
-        else if operation == "Add" {
-            total = valueTwo + valueOne
-            textLabel.text="\(total)"
-        }
-        else{
+        } else if sender.titleLabel?.text == "1" {
+            labelTextOne += "1"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "2" {
+            labelTextOne += "2"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "3" {
+            labelTextOne += "3"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "4" {
+            labelTextOne += "4"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "5" {
+            labelTextOne += "5"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "6" {
+            labelTextOne += "6"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "7" {
+            labelTextOne += "7"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "8" {
+            labelTextOne += "8"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "9" {
+            labelTextOne += "9"
+            textLabel.text = labelTextOne
+        } else if sender.titleLabel?.text == "C" {
             textLabel.text = "0"
+            labelTextTwo = ""
+            labelTextOne = ""
+        } else if sender.titleLabel?.text == "+" {
+            labelTextTwo = labelTextOne
+            labelTextOne = ""
+            operation = "Add"
+        } else if sender.titleLabel?.text == "-" {
+            labelTextTwo = labelTextOne
+            labelTextOne = ""
+            operation = "Sub"
+        } else if sender.titleLabel?.text == "/" {
+            labelTextTwo = labelTextOne
+            labelTextOne = ""
+            operation = "Div"
+        } else if sender.titleLabel?.text == "X" {
+            labelTextTwo = labelTextOne
+            labelTextOne = ""
+            operation = "Multiplication"
+        } else {
+            //Fixed by using nill coalescing operator
+            let valueOne : Int = Int(labelTextOne) ?? 0
+            let valueTwo : Int = Int(labelTextTwo) ?? 0
+            
+            var total : Int = 0
+            
+            if operation == "Multiplication" {
+                total = valueTwo * valueOne
+                textLabel.text="\(total)"
+            }
+            else if operation == "Div" {
+                if valueOne != 0 {
+                    total = valueTwo / valueOne
+                    textLabel.text="\(total)"
+                } else{
+                    textLabel.text = "Error"
+                    labelTextOne = ""
+                    labelTextTwo = ""
+                }
+            }
+            else if operation == "Sub" {
+                total = valueTwo - valueOne
+                textLabel.text="\(total)"
+            }
+            else if operation == "Add" {
+                total = valueTwo + valueOne
+                textLabel.text="\(total)"
+            }
+            else{
+                textLabel.text = "0"
+            }
+            labelTextTwo = ""
+            labelTextOne = String(total)
         }
-        labelTextTwo = ""
-        labelTextOne = String(total)
     }
 }
